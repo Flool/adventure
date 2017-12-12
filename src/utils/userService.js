@@ -14,8 +14,8 @@ function logout() {
   tokenService.removeToken();
 }
 
-function login(user) {
-  return userAPI.login(user)
+function login(creds) {
+  return userAPI.login(creds)
     .then(token => tokenService.setToken(token));
 }
 

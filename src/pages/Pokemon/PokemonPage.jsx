@@ -1,15 +1,12 @@
 import React from 'react';
+import './PokemonPage.css';
 
 const PokemonPage = (props) => {
   return (
     <div>
-      <img src={`${props.pokemon ? props.pokemon.sprites.front_default : null}`} height='200' width='200' alt='Loading'/>
-
-      <h1> {props.pokemon ? props.pokemon.name : 'loading'} </h1>
-      <h3>
-        {/* Type: {props.pokemon ? props.pokemon.types[0].type.name + ' / ' + props.pokemon.types[1].type.name : 'loading'}  */}
-        Type: {props.pokemon ? props.pokemon.types[0].type.name : 'loading'} 
-      </h3>
+      <img src={`${props.pokemon[0] ? props.pokemon[0].sprites.front_default : null}`} height='200' width='200' alt='Loading'/>
+      <h1> {props.pokemon[0] ? props.pokemon[0].name : 'loading'} </h1>
+      <h3>Type: {props.pokemon[0] && props.pokemon[0].types.map((word) => <p key={word.type.name}>{word.type.name} </p> )}</h3>
     </div>
   )
 }
