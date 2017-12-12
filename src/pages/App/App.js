@@ -9,12 +9,20 @@ import './App.css';
 import WelcomePage from '../Welcome/WelcomePage';
 import PokemonPage from '../Pokemon/PokemonPage';
 import userService from '../../utils/userService';
+import NavBar from '../../components/NavBar/NavBar'
 
 import LoginPage from '../LoginPage/LoginPage';
 import SignupPage from '../SignupPage/SignupPage';
 
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { 
+      pokemon: ''
+    }
+  }
 
   handleLogout = () => {
     userService.logout();
@@ -34,13 +42,19 @@ class App extends Component {
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
+    fetch('https://pokeapi.co/api/v2/pokemon/4/')
+    .then(res => res.json())
+    .then(json => this.setState({ pokemon: json }))
   }
 
   render() {
     return (
       <div className="App">
-        <header className='nav'>Adventure :)</header>
         <Router>
+        <div>
+          <div>
+            <NavBar handleLogout={this.handleLogout} />
+          </div>
           <Switch>
             <Route exact path='/' render={() =>
               <WelcomePage
@@ -61,13 +75,15 @@ class App extends Component {
             }/>
             <Route path='/pokemon' render={() =>
               <PokemonPage
-            
+                pokemon={this.state.pokemon}
               />
             }/>
             
           </Switch>
+          </div>
         </Router>
       </div>
+      
     );
   }
 }

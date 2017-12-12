@@ -1,9 +1,21 @@
 import React from 'react';
 
-const WelcomePage = () => {
+const PokemonPage = (props) => {
   return (
-    <h1>Pokemon Page</h1>
+    <div>
+      <img src={`${props.pokemon ? props.pokemon.sprites.front_default : null}`} height='200' width='200' alt='Loading'/>
+
+      <h1> {props.pokemon ? props.pokemon.name : 'loading'} </h1>
+      <h3>
+        {/* Type: {props.pokemon ? props.pokemon.types[0].type.name + ' / ' + props.pokemon.types[1].type.name : 'loading'}  */}
+        Type: {props.pokemon ? props.pokemon.types[0].type.name : 'loading'} 
+      </h3>
+    </div>
   )
 }
 
-export default WelcomePage;
+export default PokemonPage;
+
+
+
+//pokemon.types[0].type.name
