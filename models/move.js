@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var moveSchema = new Schema({
   name: String,
   type: String,
-  power: Number
+  power: Number,
 });
 
 module.exports = mongoose.model('Move', moveSchema);

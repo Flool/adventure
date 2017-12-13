@@ -4,7 +4,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
-import logo from '../../logo.svg';
 import './App.css';
 import WelcomePage from '../Welcome/WelcomePage';
 import PokemonPage from '../Pokemon/PokemonPage';
@@ -36,6 +35,11 @@ class App extends Component {
   }
   /*---- Callback Methods ----*/
 
+
+  handleProgress = () => {
+    // this.setState({user.progress})
+    // return null;
+  }
 
   handleLogout = () => {
     userService.logout();
