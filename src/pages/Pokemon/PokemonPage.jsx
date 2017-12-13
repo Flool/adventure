@@ -7,9 +7,9 @@ const PokemonPage = (props) => {
   return (
     <div>
       <div>
-          {props.moves ? props.moves.map((move, idx) => <li key="idx">{move.name}</li>) : <h1>Loading</h1>}
+        {(props.moves.filter(move => move.type == 'fire')).map(move =>  <li key="idx">{move.name}</li> ) }
       </div>
-
+      
       <img src={`${props.pokemon[num] ? props.pokemon[num].sprites.front_default : null}`} 
         height='200' width='200' alt='Loading'/>
       <h1> {props.pokemon[num] ? props.pokemon[num].name : 'loading'} </h1>

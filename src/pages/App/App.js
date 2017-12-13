@@ -7,6 +7,7 @@ import {
 import './App.css';
 import WelcomePage from '../Welcome/WelcomePage';
 import PokemonPage from '../Pokemon/PokemonPage';
+import BattlePage from '../BattlePage/BattlePage'
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar'
 
@@ -19,6 +20,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.pokemonUrls = [
+      /* -------- Starter Pokemon -------- */
       'https://pokeapi.co/api/v2/pokemon/1/',
       'https://pokeapi.co/api/v2/pokemon/4/',
       'https://pokeapi.co/api/v2/pokemon/7/',
@@ -28,6 +30,15 @@ class App extends Component {
       'https://pokeapi.co/api/v2/pokemon/387/',
       'https://pokeapi.co/api/v2/pokemon/390/',
       'https://pokeapi.co/api/v2/pokemon/393/',
+    ];
+    this.enemyPokemonUrls = [
+      /* --------- Enemy Pokemon --------- */
+      'https://pokeapi.co/api/v2/pokemon/10/',
+      'https://pokeapi.co/api/v2/pokemon/13/',
+      'https://pokeapi.co/api/v2/pokemon/19/',
+      'https://pokeapi.co/api/v2/pokemon/130/',
+      'https://pokeapi.co/api/v2/pokemon/142/',
+      'https://pokeapi.co/api/v2/pokemon/149/',
     ];
     this.state = { 
       pokemon: [],
@@ -125,6 +136,14 @@ class App extends Component {
             }/>
             <Route path='/pokemon/:id' render={(props) =>
               <PokemonPage
+                {...props}
+                pokemon={this.state.pokemon}
+                moves={this.state.moves}
+                handleSelection={this.handleSelection}
+              />
+            }/>
+            <Route path='/battle/:id' render={(props) =>
+              <BattlePage
                 {...props}
                 pokemon={this.state.pokemon}
                 handleSelection={this.handleSelection}

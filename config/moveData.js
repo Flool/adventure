@@ -130,9 +130,9 @@ const moveList = [
     "power": 20
   },
   {
-    "name": "Peck",
+    "name": "Aerial Ace",
     "type": "flying",
-    "power": 0
+    "power": 20
   },
 ]
 
