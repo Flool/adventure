@@ -33,22 +33,22 @@ const moveList = [
   /*----- Fire -----*/
   {
     "name": "Ember",
-    "type": "Fire",
+    "type": "fire",
     "power": 15
   },
   {
     "name": "Flamethrower",
-    "type": "Fire",
+    "type": "fire",
     "power": 25
   },
   {
     "name": "Fire Blast",
-    "type": "Fire",
+    "type": "fire",
     "power": 35
   },
   {
     "name": "Smokescreen",
-    "type": "Fire",
+    "type": "fire",
     "power": 0
   },
   {

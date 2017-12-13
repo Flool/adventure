@@ -1,13 +1,19 @@
-var mongoose=require('mongoose');
-require('./database')
-var product=require('../models/move');
-var moveData=require('./moveData');
+var mongoose = require('mongoose');
+require('dotenv').config();
+require('./database');
 
-move.remove({}).then( () => {
-  return move.create(moveData)
+// require models
+var Move = require('./../models/Move');
+
+// require seed data
+var moveData = require('./moveData');
+
+Move.remove({})
+  .then(() => {
+    return Move.create(moveData)
 })
-.then((move) => {
-  console.log(moves)
-  mongoose.connection.close()
-  process.exit()
-})
+  .then((move) => {
+    console.log(move)
+    mongoose.connection.close()
+    process.exit()
+  })

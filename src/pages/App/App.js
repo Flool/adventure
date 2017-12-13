@@ -22,15 +22,17 @@ class App extends Component {
       'https://pokeapi.co/api/v2/pokemon/1/',
       'https://pokeapi.co/api/v2/pokemon/4/',
       'https://pokeapi.co/api/v2/pokemon/7/',
-      'https://pokeapi.co/api/v2/pokemon/152/',
-      'https://pokeapi.co/api/v2/pokemon/155/',
-      'https://pokeapi.co/api/v2/pokemon/158/',
       'https://pokeapi.co/api/v2/pokemon/252/',
       'https://pokeapi.co/api/v2/pokemon/255/',
       'https://pokeapi.co/api/v2/pokemon/258/',
+      'https://pokeapi.co/api/v2/pokemon/387/',
+      'https://pokeapi.co/api/v2/pokemon/390/',
+      'https://pokeapi.co/api/v2/pokemon/393/',
     ];
     this.state = { 
-      pokemon: []
+      pokemon: [],
+      moves: [],
+      pokeIdx: 0
     }
   }
   /*---- Callback Methods ----*/
@@ -39,6 +41,10 @@ class App extends Component {
   handleProgress = () => {
     // this.setState({user.progress})
     // return null;
+  }
+
+  handleSelection = (selPoke) => {
+    this.setState({pokeIdx: selPoke})
   }
 
   handleLogout = () => {
@@ -67,6 +73,10 @@ class App extends Component {
     Promise.all(promises)
     .then(pokemon => {
       this.setState({pokemon});
+    });
+
+    fetch(`/pokemon`).then( (data) => data.json()).then((data) => {
+      this.setState({moves: data})
     });
 
 
@@ -117,6 +127,7 @@ class App extends Component {
               <PokemonPage
                 {...props}
                 pokemon={this.state.pokemon}
+                handleSelection={this.handleSelection}
               />
             }/>
             
