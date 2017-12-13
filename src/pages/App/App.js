@@ -34,6 +34,8 @@ class App extends Component {
       pokemon: []
     }
   }
+  /*---- Callback Methods ----*/
+
 
   handleLogout = () => {
     userService.logout();
@@ -107,8 +109,9 @@ class App extends Component {
                 handleLogin={this.handleLogin}
               />
             }/>
-            <Route path='/pokemon' render={() =>
+            <Route path='/pokemon/:id' render={(props) =>
               <PokemonPage
+                {...props}
                 pokemon={this.state.pokemon}
               />
             }/>

@@ -1,11 +1,18 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const WelcomePage = (props) => {
+  var links = props.pokemon.map((poke, pokeIdx) => (
+    <Link to={`pokemon/${pokeIdx}`}>
+      <img key={pokeIdx} src={poke.sprites.front_default} height='370' width='370'></img>
+    </Link>
+  ));
   return (
     <div>
       <h1>Welcome Page</h1>
-      {props.pokemon.map(poke => <img src={poke.sprites.front_default} height='200' width='200'/>)}
-      {/* <img src={`${props.pokemon1 ? props.pokemon1.sprites.front_default : null}`} height='200' width='200' alt='Loading... '/> */}
+      <div>
+        {links}
+      </div>
     </div>
   )
 }
