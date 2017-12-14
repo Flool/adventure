@@ -54,8 +54,47 @@ class App extends Component {
     // return null;
   }
 
+  selectMoves = () => {
+    let newArr = [
+      /*----- Grass -----*/
+      {
+        "name": "Vine Whip",
+        "type": "grass",
+        "power": 15
+      },
+      {
+        "name": "Absorb",
+        "type": "grass",
+        "power": 10
+      },
+      {
+        "name": "Razor Leaf",
+        "type": "grass",
+        "power": 25
+      },
+      {
+        "name": "Leech Seed",
+        "type": "grass",
+        "power": 5
+      },
+    ]
+    // let moveArr = this.state.moves.slice()
+    // let newArr = []
+    // for(let x=0; x<4; x++){
+    //   let randIdx = Math.floor(Math.random() * 3)
+    //   moveArr ? newArr.push(moveArr[randIdx].name) : 'fuckyou';
+    //   moveArr.splice(randIdx, 1)
+    // }
+    return newArr;
+  }
+
+
   handleSelection = (selPoke) => {
     this.setState({pokeIdx: selPoke})
+  }
+
+  handleTurn = (move) => {
+    
   }
 
   handleLogout = () => {
@@ -70,6 +109,20 @@ class App extends Component {
   handleLogin = () => {
     this.setState({user: userService.getUser()});
   }
+
+    // Battle Callbacks //
+
+    /*---- Functions (probably don't go here lol) ----*/
+      // User picks move
+      // Check speed
+      // 1st move goes first - calculate damage(type/stat boosts)
+      // check for win/lose
+      // 2nd move goes next - calculate damage(type/stat boosts)
+      // check for win/lose
+      // run end of turn events
+
+    
+
 
   /*--- Lifecycle Methods ---*/
 
@@ -142,11 +195,16 @@ class App extends Component {
                 handleSelection={this.handleSelection}
               />
             }/>
-            <Route path='/battle/:id' render={(props) =>
+            <Route path='/battle/' render={(props) =>
               <BattlePage
                 {...props}
                 pokemon={this.state.pokemon}
+                pokeIdx={this.state.pokeIdx}
+                moves={this.state.moves}
                 handleSelection={this.handleSelection}
+                handleProgress={this.handleProgress}
+                selectMoves={this.selectMoves}
+                handleTurn={this.handleTurn}
               />
             }/>
             
