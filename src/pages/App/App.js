@@ -56,7 +56,6 @@ class App extends Component {
   }
 
   splitPoke = () => {
-    console.log('fuck')
     let newPoke = this.state.pokemon.slice(0, 9)
     let newEnemyPoke = this.state.pokemon.slice(9)
     this.setState({pokemon: newPoke, enemyPokemon: newEnemyPoke})

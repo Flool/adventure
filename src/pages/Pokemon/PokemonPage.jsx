@@ -3,7 +3,7 @@ import './PokemonPage.css';
 
 
 const PokemonPage = (props) => {
-  let num = (parseInt((props.location.pathname).slice(9), 10))
+  let num = (parseInt((props.location.pathname).slice(9),10))
   let pokemon = props.pokemon[num]
   
 

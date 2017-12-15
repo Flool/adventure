@@ -13,7 +13,6 @@ Move.remove({})
     return Move.create(moveData)
 })
   .then((move) => {
-    console.log(move)
     mongoose.connection.close()
     process.exit()
   })
