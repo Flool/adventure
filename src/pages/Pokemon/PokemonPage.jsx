@@ -17,8 +17,7 @@ const PokemonPage = (props) => {
         height='200' width='200' alt='Loading'/>
       <h1> {pokemon ? pokemon.name : 'loading'} </h1>
       <h3>Type: {pokemon && pokemon.types.map((word) => <p key={word.type.name}>{word.type.name} </p> )}</h3>
-      <button type="button" onClick={() => props.handleSelection(num)}>Choose this pokemon</button>
-      <Link to={`battle`}>Battle</Link>
+      {/* <button type="button" onClick={() => props.handleSelection(num)}>Choose this pokemon</button> */}
     </div>
   )
 }
