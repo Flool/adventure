@@ -24,6 +24,8 @@ const BattlePage = (props) => {
           poke={enemyPoke}
           // moves={enemyMoves}
           maxHp={enemyMaxHp}
+          enemyHp={props.enemyHp}
+          setHp={props.setHp}
         />
       </div>
 
@@ -32,6 +34,8 @@ const BattlePage = (props) => {
           poke={props.playerPoke}
           moves={props.playerMoves}
           maxHp={props.playerMaxHP}
+          playerHp={props.playerHp}
+          setHp={props.setHp}
         />
       </div>
 

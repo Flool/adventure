@@ -235,6 +235,7 @@ class App extends Component {
                 choosePoke={this.choosePoke}
                 playerHp={this.state.playerHp}
                 enemyHp={this.state.enemyHp}
+                setHp={this.setHp}
               />
             }/>
             
