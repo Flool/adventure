@@ -6,9 +6,9 @@ const WelcomePage = (props) => {
   
   var links = props.pokemon.map((poke, pokeIdx) => (
    
-  <div className="col s12 m4">
+  <div key={poke.name} className="col s12 m4">
     <div className="card blue lighten-3 opacity">
-      <div class="card-image">
+      <div className="card-image">
       <Link className ='normal'to={`pokemon/${pokeIdx}`}>
         <img src={poke.sprites.front_default} height='400' width='400' alt=''/>
       </Link>
