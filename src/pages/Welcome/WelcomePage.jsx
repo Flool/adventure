@@ -6,16 +6,13 @@ const WelcomePage = (props) => {
   
   var links = props.pokemon.map((poke, pokeIdx) => (
    
-    <div class="col s12 m4">
-    <div class="card red lighten-2 opacity">
-      <div class="card-content black-text normal">
-        <span class="card-title normal">{poke.name}</span>
-        <Link class ='normal'to={`pokemon/${pokeIdx}`}>
-          <img class="normal" key={pokeIdx} src={poke.sprites.front_default} height='400' width='400' alt=''></img>
-        </Link>
-      </div>
-      <div class="card-action normal">
-        <Link to={`pokemon/${pokeIdx}`}>See this Pokemon</Link>
+  <div className="col s12 m4">
+    <div className="card blue lighten-3 opacity">
+      <div class="card-image">
+      <Link className ='normal'to={`pokemon/${pokeIdx}`}>
+        <img src={poke.sprites.front_default} height='400' width='400' alt=''/>
+      </Link>
+      <span className="card-title black-text">{poke.name}</span>
       </div>
     </div>
   </div>
@@ -25,7 +22,7 @@ const WelcomePage = (props) => {
     <div>
       <h2>Starter Pokemon</h2>
       {/* <button type="button" onClick='handleProgress'>Up Progress</button> */}
-      <div class='row normal'>
+      <div className='row normal'>
         {links}
       </div>
     </div>
