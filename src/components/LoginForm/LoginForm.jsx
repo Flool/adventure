@@ -13,7 +13,6 @@ class LoginForm extends Component {
 
   handleChange = (field, e) => {
     this.setState({
-      // Using ES2015 Computed Property Names
       [field]: e.target.value
     });
   }
@@ -25,7 +24,8 @@ class LoginForm extends Component {
         this.props.handleLogin();
         this.props.history.push('/');
       })
-      // invalid credentials - don't alert in YOUR app :)
+      // invalid credentials - don't alert in YOUR app :) 
+      // haha shit I don't know what replace the alert with
       .catch(err => alert('Invalid Credentials!'));
   }
 
