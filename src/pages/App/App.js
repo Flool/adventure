@@ -29,29 +29,41 @@ class App extends Component {
       'https://pokeapi.co/api/v2/pokemon/258/',
       'https://pokeapi.co/api/v2/pokemon/387/',
       'https://pokeapi.co/api/v2/pokemon/390/',
-      'https://pokeapi.co/api/v2/pokemon/393/',
-    ];
-    this.enemyPokemonUrls = [
-      /* --------- Enemy Pokemon --------- */
+      'https://pokeapi.co/api/v2/pokemon/393/', //9
+          /*------- Enemy ---------*/
       'https://pokeapi.co/api/v2/pokemon/10/',
       'https://pokeapi.co/api/v2/pokemon/13/',
       'https://pokeapi.co/api/v2/pokemon/19/',
       'https://pokeapi.co/api/v2/pokemon/130/',
       'https://pokeapi.co/api/v2/pokemon/142/',
-      'https://pokeapi.co/api/v2/pokemon/149/',
+      'https://pokeapi.co/api/v2/pokemon/149/', //6
     ];
     this.state = { 
       pokemon: [],
+      enemyPokemon: [],
       moves: [],
-      pokeIdx: 0
+      pokeIdx: 0,
+      playerHp: 1,
+      enemyHp: 1,
     }
   }
   /*---- Callback Methods ----*/
 
 
-  handleProgress = () => {
+  handleProgress = (hp) => {
     // this.setState({user.progress})
     // return null;
+  }
+
+  splitPoke = () => {
+    console.log('fuck')
+    let newPoke = this.state.pokemon.slice(0, 9)
+    let newEnemyPoke = this.state.pokemon.slice(9)
+    this.setState({pokemon: newPoke, enemyPokemon: newEnemyPoke})
+  }
+
+  choosePoke = (prog) => {
+    return this.state.enemyPokemon ? this.state.enemyPokemon[0] : null;
   }
 
   selectMoves = () => {
@@ -88,12 +100,19 @@ class App extends Component {
     return newArr;
   }
 
+  setHp = (maxP, maxE) => {
+    this.setState({playerHp: maxP, enemyHp: maxE})
+  }
 
   handleSelection = (selPoke) => {
     this.setState({pokeIdx: selPoke})
   }
 
   handleTurn = (move) => {
+    
+  }
+
+  calcHp = (type) => {
     
   }
 
@@ -136,12 +155,18 @@ class App extends Component {
     });
     Promise.all(promises)
     .then(pokemon => {
-      this.setState({pokemon});
+        this.setState({pokemon})
+        this.splitPoke();
     });
-
+    
     fetch(`/pokemon`).then( (data) => data.json()).then((data) => {
       this.setState({moves: data})
     });
+
+
+
+
+
 
 
     // Promise.all([
@@ -199,12 +224,17 @@ class App extends Component {
               <BattlePage
                 {...props}
                 pokemon={this.state.pokemon}
+                enemyPokemon={this.state.enemyPokemon}
                 pokeIdx={this.state.pokeIdx}
                 moves={this.state.moves}
                 handleSelection={this.handleSelection}
                 handleProgress={this.handleProgress}
                 selectMoves={this.selectMoves}
                 handleTurn={this.handleTurn}
+                calcHp={this.calcHp}
+                choosePoke={this.choosePoke}
+                playerHp={this.state.playerHp}
+                enemyHp={this.state.enemyHp}
               />
             }/>
             

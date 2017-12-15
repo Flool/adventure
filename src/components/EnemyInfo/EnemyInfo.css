@@ -1,0 +1,12 @@
+.EnemyPortrait {
+  display: inline;
+  outline: black 2px solid;
+}
+
+.EnemyStats {
+  background-color: burlywood;
+  height: 150px;
+  width: 400px;
+  outline: black 2px solid;
+  margin-left: 50px;
+}
